@@ -18,19 +18,19 @@ def call_api_data():
     data = json.loads(html_content)
     return data
 
-def get_prices_by_type(type, data):
+def get_prices_by_type(gasoline_type, data):
     prices_by_type = []
     for entry in data[LIST_PRICES_NAME]:
-        price_by_type = entry.get(type, "").replace(",", ".")
+        price_by_type = entry.get(gasoline_type, "").replace(",", ".")
         try:
             prices_by_type.append(float(price_by_type))
         except ValueError:
-            print(f"Could not convert '{price_by_type}' to float")
+            prices= ()
     return prices_by_type
 
-def calculate_avg():
+def calculate_avg(gasoline_type, city = "None"):
     data = call_api_data()
-    prices_gasoline_95_e5 = get_prices_by_type(PRICE_GASOLINE_95_E5, data)
+    prices_gasoline_95_e5 = get_prices_by_type(gasoline_type, data)
     average_price = np.mean(prices_gasoline_95_e5)
     formatted_number = "{:.2f}".format(average_price)
     return (formatted_number)
