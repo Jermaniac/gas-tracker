@@ -8,9 +8,10 @@ def create_app():
     def home():
         return "¡Bienvenido a la aplicación de precios de gasolina!"
 
+    # this will return avg from one type of gasoline (query param) for whole Spain or for every Municipio
     @app.route('/api/avg_gasoline')
-    def get_media_gasolina():
+    def get_avg_gasolina():
         media = calculate_avg()
-        return jsonify({"media_gasolina": media})
+        return jsonify({"avg_price": media})
 
     return app
