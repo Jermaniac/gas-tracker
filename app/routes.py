@@ -12,8 +12,8 @@ def create_app():
     @app.route('/api/avg_gasoline')
     def get_avg_gasolina():
         gasoline_type = request.args.get('gasoline_type')
-        city = request.args.get('city')
-        media = calculate_avg(gasoline_type, city)
-        return jsonify({"avg_price": media})
+        id_provincia = request.args.get('id_provincia')
+        average = calculate_avg(gasoline_type, id_provincia)
+        return jsonify({"avg_price": average})
 
     return app
