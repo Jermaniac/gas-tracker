@@ -6,9 +6,9 @@ def create_app():
 
     @app.route('/')
     def home():
-        return "¡Bienvenido a la aplicación de precios de gasolina!"
+        return "¡Welcome to gas-tracker app!"
 
-    # this will return avg from one type of gasoline (query param) for whole Spain or for every Municipio
+    # this will return avg from one type of gasoline (query param) for whole Spain or for one Provincia
     @app.route('/api/avg_gasoline')
     def get_avg_gasolina():
         gasoline_type = request.args.get('gasoline_type')
