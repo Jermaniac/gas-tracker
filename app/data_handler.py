@@ -15,14 +15,18 @@ NONE_STRING = config.NONE_STRING
 ZERO_STRING = config.ZERO_STRING
 EMPTY_STRING = config.EMPTY_STRING
 
+class APIException(Exception):
+    pass
+
 def call_api_data():
-    response = requests.get(API_REST_URL)
-    if response.status_code == SUCCESS_CODE:
-        html_content = response.content.decode(DECODE_FORMAT)    
-    else:
-        print("Failed to fetch data from API")
-    data = json.loads(html_content)
-    return data
+    try:
+        response = requests.get(API_REST_URL)
+        response.raise_for_status()
+        html_content = response.content.decode(DECODE_FORMAT)
+        data = json.loads(html_content)
+        return data
+    except Exception as e:
+        raise APIException(f"An unexpected error occurred while fetching data from Spanish goverment: {e}")
 
 def get_prices_by_type(gasoline_type, data, id_provincia):
     prices_by_type = []
