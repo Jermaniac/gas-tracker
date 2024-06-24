@@ -1,4 +1,4 @@
-from app.data_handler import get_filtered_gas_data_by_province
+from utils.data_handler import get_filtered_gas_data_by_province
 from flask import Flask, jsonify
 
 ip = '0.0.0.0'
