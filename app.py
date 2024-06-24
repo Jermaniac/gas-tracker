@@ -1,10 +1,8 @@
 from app.data_handler import get_filtered_gas_data_by_province
 from flask import Flask, jsonify
 
-app = Flask(__name__)
-ip = '0.0.0.0'
-
 def create_app():
+    app = Flask(__name__)
 
     @app.route('/province/<string:id_provincia>')
     def get_info_province(id_provincia):
@@ -24,5 +22,7 @@ def create_app():
     
     return app
 
+app = create_app()  # Create the app instance
+
 if __name__ == "__main__":
-    app.run(host=ip, port=9004)
+    app.run(host='0.0.0.0', port=9004)
