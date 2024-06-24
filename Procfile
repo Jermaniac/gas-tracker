@@ -1,1 +1,1 @@
-web: gunicorn app:create_app
+web: gunicorn gas-tracker:create_app
