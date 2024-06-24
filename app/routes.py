@@ -4,7 +4,6 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 def create_app():
 
-    # this will return info from a province
     @app.route('/province/<string:id_provincia>')
     def get_info_province(id_provincia):
         try:
