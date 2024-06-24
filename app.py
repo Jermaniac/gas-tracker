@@ -1,6 +1,7 @@
 from app.data_handler import get_filtered_gas_data_by_province
 from flask import Flask, jsonify
 
+ip = '0.0.0.0'
 app = Flask(__name__)
 
 @app.route('/province/<string:id_provincia>')
@@ -20,4 +21,4 @@ def internal_server_error(e):
     return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=9004)
+    app.run(host=ip, port=9004)
