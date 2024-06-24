@@ -1,23 +1,24 @@
-from app.data_handler import calculate_avg_with_pandas
-from app.data_handler import return_params
-from app.data_handler import calculate_avg
-from flask import Flask, jsonify, request
+from app.data_handler import get_filtered_gas_data_by_province
+from flask import Flask, jsonify
 
 def create_app():
     app = Flask(__name__)
 
-    # this will return avg from one type of gasoline (query param) for whole Spain or for one Provincia
-    @app.route('/api/avg_gasoline')
-    def get_avg_gasolina():
-        gasoline_type = request.args.get('gasoline_type')
-        id_provincia = request.args.get('id_provincia')
-        average = calculate_avg_with_pandas(gasoline_type, id_provincia)
-        return jsonify({"avg_price": average})
-
     # this will return info from a province
     @app.route('/province/<string:id_provincia>')
     def get_info_province(id_provincia):
-        params = return_params(id_provincia)
-        return jsonify({"info": params})
+        try:
+            data = get_filtered_gas_data_by_province(id_provincia)
+            return jsonify({"info": data})
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+    
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return jsonify({"error": "Resource not found"}), 404
+
+    @app.errorhandler(500)
+    def internal_server_error(e):
+        return jsonify({"error": "Internal server error"}), 500
     
     return app
