@@ -50,10 +50,7 @@ export async function fetchLatestInvoices() {
 
 async function fetchCurrentGasolinePrices(provinceId: number) {
   const res = await fetch(`${process.env.API_GASOLINE_PRICES}/province/${provinceId}`);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
     throw new Error('Failed to fetch data')
   }
 

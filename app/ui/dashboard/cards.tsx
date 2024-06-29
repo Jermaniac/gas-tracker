@@ -4,7 +4,6 @@ import {
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchCardData } from '@/app/lib/data';
-import { useEffect, useState } from 'react';
 
 const iconMap = {
   price: BanknotesIcon,
@@ -13,7 +12,6 @@ const iconMap = {
 
 export default async function CardWrapper({ provinceId }: { provinceId: number }) {
   const data = await fetchCardData(provinceId);
-
   return (
     <>
       {data && <>
