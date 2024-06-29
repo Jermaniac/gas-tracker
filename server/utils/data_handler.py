@@ -37,13 +37,26 @@ def get_filtered_gas_data_by_province(id_provincia):
     proccesed_data = process_gas_data(raw_data ,id_provincia)
     return proccesed_data
 
+def sanitize_value(value):
+    if pd.isna(value) or value == float('inf') or value == -float('inf'):
+        return None
+    return round(value, 3)
+
+def sanitize_dataframe(df):
+    numeric_columns = df.select_dtypes(include='number').columns
+    df[numeric_columns] = df[numeric_columns].fillna(0)
+    return df
+
+
 def process_gas_data(data, id_provincia):
     df = pd.DataFrame(data[LIST_PRICES_NAME])
 
     filtered_df = df[df[ID_PROVINCIA_STRING] == id_provincia].copy()
 
     averages = calculate_averages(filtered_df, GASOLINE_TYPES)
-        
+    
+    filtered_df = sanitize_dataframe(filtered_df)
+
     result = {
         **averages,
         "data": filtered_df.to_dict(orient='records')
@@ -56,5 +69,7 @@ def calculate_averages(df, column_names):
     for column in column_names:
         df[column] = df[column].astype(str).str.replace(COMMA_STRING, DOT_STRING)
         df[column] = pd.to_numeric(df[column], errors='coerce')
-        averages[CUSTOM_NAMES[column]] = df[column].mean()
+        mean_value = df[column].mean()
+        sanitized_mean_value = sanitize_value(mean_value)
+        averages[CUSTOM_NAMES[column]] = sanitize_value(sanitized_mean_value)
     return averages

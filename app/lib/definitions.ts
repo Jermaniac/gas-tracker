@@ -86,3 +86,50 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export type APIGasolineResponse = {
+  info: Info;
+}
+
+export type Info = {
+  data:           GasStation[];
+  gas_95_e10_avg: number | null;
+  gas_95_e5_avg:  number | null;
+  gas_98_e10_avg: number | null;
+  gas_98_e5_avg:  number | null;
+}
+
+export type GasStation = {
+  "% BioEtanol":                        string;
+  "% Éster metílico":                   string;
+  "C.P.":                               string;
+  Dirección:                            string;
+  Horario:                              string;
+  IDCCAA:                               string;
+  IDEESS:                               string;
+  IDMunicipio:                          string;
+  IDProvincia:                          string;
+  Latitud:                              string;
+  Localidad:                            string;
+  "Longitud (WGS84)":                   string;
+  Margen:                               string;
+  Municipio:                            string;
+  "Precio Biodiesel":                   string;
+  "Precio Bioetanol":                   string;
+  "Precio Gas Natural Comprimido":      string;
+  "Precio Gas Natural Licuado":         string;
+  "Precio Gases licuados del petróleo": string;
+  "Precio Gasoleo A":                   string;
+  "Precio Gasoleo B":                   string;
+  "Precio Gasoleo Premium":             string;
+  "Precio Gasolina 95 E10":             number;
+  "Precio Gasolina 95 E5":              number;
+  "Precio Gasolina 95 E5 Premium":      string;
+  "Precio Gasolina 98 E10":             number;
+  "Precio Gasolina 98 E5":              number;
+  "Precio Hidrogeno":                   string;
+  Provincia:                            string;
+  Remisión:                             string;
+  Rótulo:                               string;
+  "Tipo Venta":                         string;
+}

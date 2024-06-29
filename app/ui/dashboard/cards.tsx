@@ -1,52 +1,39 @@
 import {
   BanknotesIcon,
   ClockIcon,
-  UserGroupIcon,
-  InboxIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchCardData } from '@/app/lib/data';
+import { useEffect, useState } from 'react';
 
 const iconMap = {
-  collected: BanknotesIcon,
-  customers: UserGroupIcon,
+  price: BanknotesIcon,
   pending: ClockIcon,
-  invoices: InboxIcon,
 };
 
-export default async function CardWrapper() {
-  const {
-    numberOfInvoices,
-    numberOfCustomers,
-    totalPaidInvoices,
-    totalPendingInvoices,
-  } = await fetchCardData();
+export default async function CardWrapper({ provinceId }: { provinceId: number }) {
+  const data = await fetchCardData(provinceId);
 
   return (
     <>
-      {/* NOTE: comment in this code when you get to this point in the course */}
-
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
-      <Card
-        title="Total Customers"
-        value={numberOfCustomers}
-        type="customers"
-      />
+      {data && <>
+        <Card title="Average Price Gasoline 95 E5" value={data.gasPrice95E5} />
+        <Card title="Average Price Gasoline 98 E5" value={data.gasPrice98E5} />
+        <Card title="Average Price Gasoline 95 E10" value={data.gasPrice95E10} />
+        <Card title="Average Price Gasoline 98 E10" value={data.gasPrice98E10} />
+      </>}
     </>
   );
 }
 
 export function Card({
   title,
-  value,
-  type,
+  value
 }: {
   title: string;
   value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
 }) {
+  const type = value === 'No Data' ? 'pending' : 'price'
   const Icon = iconMap[type];
 
   return (

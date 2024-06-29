@@ -1,9 +1,24 @@
-import { Revenue } from './definitions';
+import { APIGasolineResponse, Revenue } from './definitions';
+
+export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
+  const { info } = response;
+
+  const gasPrice95E5 = formatGasolinePrice(info.gas_95_e5_avg ?? 0);
+  const gasPrice98E5 = formatGasolinePrice(info.gas_98_e5_avg ?? 0);
+  const gasPrice95E10 = formatGasolinePrice(info.gas_95_e10_avg ?? 0);
+  const gasPrice98E10 = formatGasolinePrice(info.gas_98_e10_avg ?? 0);
+
+  return { gasPrice95E5, gasPrice98E5, gasPrice95E10, gasPrice98E10};
+}
+
+export const formatGasolinePrice = (amount: number) => {
+  return amount == 0 ? 'No Data' : formatCurrency(amount)
+}
 
 export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString('en-US', {
+  return amount.toLocaleString('es-ES', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'EUR',
   });
 };
 
