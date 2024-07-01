@@ -1,46 +1,90 @@
 'use client';
 
-import {
-  UserGroupIcon,
-  HomeIcon,
-  DocumentDuplicateIcon,
-} from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
+import { useRouter, usePathname } from "next/navigation";
+
 
 // Map of links to display in the side navigation.
 // Depending on the size of the application, this would be stored in a database.
-const links = [
-  { name: 'Home', href: '/dashboard', icon: HomeIcon },
-  {
-    name: 'Invoices',
-    href: '/dashboard/invoices',
-    icon: DocumentDuplicateIcon,
-  },
-  { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
-];
+interface SpanishPostalCodes {
+  [key: number]: string;
+}
+
+const spanishPostalCodes: SpanishPostalCodes = {
+  1: "Álava",
+  2: "Albacete",
+  3: "Alicante",
+  4: "Almería",
+  5: "Ávila",
+  6: "Badajoz",
+  7: "Baleares",
+  8: "Barcelona",
+  9: "Burgos",
+  10: "Cáceres",
+  11: "Cádiz",
+  12: "Castellón",
+  13: "Ciudad Real",
+  14: "Córdoba",
+  15: "A Coruña",
+  16: "Cuenca",
+  17: "Girona",
+  18: "Granada",
+  19: "Guadalajara",
+  20: "Guipúzcoa",
+  21: "Huelva",
+  22: "Huesca",
+  23: "Jaén",
+  24: "León",
+  25: "Lleida",
+  26: "La Rioja",
+  27: "Lugo",
+  28: "Madrid",
+  29: "Málaga",
+  30: "Murcia",
+  31: "Navarra",
+  32: "Ourense",
+  33: "Asturias",
+  34: "Palencia",
+  35: "Las Palmas",
+  36: "Pontevedra",
+  37: "Salamanca",
+  38: "Santa Cruz de Tenerife",
+  39: "Cantabria",
+  40: "Segovia",
+  41: "Sevilla",
+  42: "Soria",
+  43: "Tarragona",
+  44: "Teruel",
+  45: "Toledo",
+  46: "Valencia",
+  47: "Valladolid",
+  48: "Vizcaya",
+  49: "Zamora",
+  50: "Zaragoza",
+  51: "Ceuta",
+  52: "Melilla"
+};
 
 export default function NavLinks() {
+  const router = useRouter();
   const pathname = usePathname();
+  const provinceId = pathname.split('/').pop();
+
+
+  const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedProvinceId = e.target.value;
+    router.push(`/dashboard/${selectedProvinceId}`);
+  };
   return (
-    <>
-      {links.map((link) => {
-        const LinkIcon = link.icon;
-        return (
-          <Link key={link.name}
-            href={link.href}
-            className={clsx(
-              'flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
-              {
-                'bg-sky-100 text-blue-600': pathname === link.href,
-              },
-            )}>
-            <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
-          </Link>
-        );
-      })}
-    </>
-  );
+    <select
+        className="mb-4 p-2 border rounded"
+        onChange={handleProvinceChange}
+        value={provinceId}
+    >
+        {Object.entries(spanishPostalCodes).map(([id, name]) => (
+            <option key={id} value={id}>
+                {name}
+            </option>
+        ))}
+    </select>
+);
 }
