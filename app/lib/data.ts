@@ -61,7 +61,6 @@ export async function fetchCardData(provinceId: number) {
   try {
     const data = await fetchCurrentGasolinePrices(provinceId)
     const formatedData = formatResponseGasolinePrices(data);
-
     return formatedData;
   } catch (error) {
     console.error('Database Error:', error);

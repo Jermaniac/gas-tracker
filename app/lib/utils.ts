@@ -2,13 +2,14 @@ import { APIGasolineResponse, Revenue } from './definitions';
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   const { info } = response;
+  const list = info.data
 
   const gasPrice95E5 = formatGasolinePrice(info.gas_95_e5_avg ?? 0);
   const gasPrice98E5 = formatGasolinePrice(info.gas_98_e5_avg ?? 0);
   const gasPrice95E10 = formatGasolinePrice(info.gas_95_e10_avg ?? 0);
   const gasPrice98E10 = formatGasolinePrice(info.gas_98_e10_avg ?? 0);
 
-  return { gasPrice95E5, gasPrice98E5, gasPrice95E10, gasPrice98E10};
+  return { gasPrice95E5, gasPrice98E5, gasPrice95E10, gasPrice98E10, list};
 }
 
 export const formatGasolinePrice = (amount: number) => {

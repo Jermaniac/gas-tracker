@@ -99,6 +99,14 @@ export type Info = {
   gas_98_e5_avg:  number | null;
 }
 
+export type InfoFormated = {
+  list:           GasStation[];
+  gasPrice95E10: string;
+  gasPrice95E5:  string;
+  gasPrice98E10: string;
+  gasPrice98E5:  string;
+}
+
 export type GasStation = {
   "% BioEtanol":                        string;
   "% Éster metílico":                   string;
