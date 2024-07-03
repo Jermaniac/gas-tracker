@@ -20,9 +20,9 @@ export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   const avgPrice98E10 = formatGasolinePrice(info.g98_e10_avg_price ?? 0);
   const avgPriceBiodiesel = formatGasolinePrice(info.biodiesel_avg_price ?? 0);
   const avgPriceBioetanol = formatGasolinePrice(info.bioetanol_avg_price ?? 0);
-  const avgPriceNaturalComprimido = formatGasolinePrice(info.gas_natural_comprimido_avg_price ?? 0);
-  const avgPriceNaturalLicuado = formatGasolinePrice(info.gas_natural_licuado_avg_price ?? 0);
-  const avgPriceLicuadosPetroleo = formatGasolinePrice(info.gases_licuados_petroleo_avg_price ?? 0);
+  const avgPriceGasNaturalComprimido = formatGasolinePrice(info.gas_natural_comprimido_avg_price ?? 0);
+  const avgPriceGasNaturalLicuado = formatGasolinePrice(info.gas_natural_licuado_avg_price ?? 0);
+  const avgPriceGasesLicuadosPetroleo = formatGasolinePrice(info.gases_licuados_petroleo_avg_price ?? 0);
   const avgPriceGasoleoA = formatGasolinePrice(info.gasoleo_a_avg_price ?? 0);
   const avgPriceGasoleoB = formatGasolinePrice(info.gasoleo_b_avg_price ?? 0);
   const avgPriceGasoleoPremium = formatGasolinePrice(info.gasoleo_premium_avg_price ?? 0);
@@ -35,9 +35,9 @@ export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
     avgPrice98E10, 
     avgPriceBiodiesel, 
     avgPriceBioetanol, 
-    avgPriceNaturalComprimido, 
-    avgPriceNaturalLicuado, 
-    avgPriceLicuadosPetroleo, 
+    avgPriceGasNaturalComprimido, 
+    avgPriceGasNaturalLicuado, 
+    avgPriceGasesLicuadosPetroleo, 
     avgPriceGasoleoA, 
     avgPriceGasoleoB, 
     avgPriceGasoleoPremium, 
