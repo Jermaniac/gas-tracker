@@ -10,7 +10,9 @@ GASOLINE_TYPES = [
     'Precio Gasolina 95 E5', 
     'Precio Gasolina 98 E5', 
     'Precio Gasolina 95 E10', 
-    'Precio Gasolina 98 E10'
+    'Precio Gasolina 98 E10',
+    'Precio Biodiesel',
+    
 ]
 CUSTOM_NAMES = {
     'Precio Gasolina 95 E5': 'gas_95_e5_avg',
