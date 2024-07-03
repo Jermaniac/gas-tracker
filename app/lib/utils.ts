@@ -1,7 +1,13 @@
 import { APIGasolineResponse, GasStation, Revenue } from './definitions';
 
-export const sortGasStationListByPriceType = (list: GasStation[], type: string) => {
-  return list.filter((gs) => gs[type]!=0).sort((a,b) => a[type] - b[type])
+export const sortGasStationListByPriceType = (list: GasStation[]) => {
+  return list.filter((gs) => typeof gs['Precio Gasolina 95 E5'] === 'number' && gs['Precio Gasolina 95 E5'] !== 0)
+             .sort((a, b) => {
+               if (typeof a['Precio Gasolina 95 E5'] === 'number' && typeof b['Precio Gasolina 95 E5'] === 'number') {
+                 return a['Precio Gasolina 95 E5'] - b['Precio Gasolina 95 E5'];
+               }
+               return 0;
+             });
 }
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
