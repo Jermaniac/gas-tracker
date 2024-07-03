@@ -93,18 +93,36 @@ export type APIGasolineResponse = {
 
 export type Info = {
   data:           GasStation[];
-  gas_95_e10_avg: number | null;
-  gas_95_e5_avg:  number | null;
-  gas_98_e10_avg: number | null;
-  gas_98_e5_avg:  number | null;
+  g95_e10_avg_price: number | null;
+  g95_e5_avg_price:  number | null;
+  g98_e10_avg_price: number | null;
+  g98_e5_avg_price:  number | null;
+  biodiesel_avg_price:        number | null;
+  bioetanol_avg_price:        number | null;
+  gas_natural_comprimido_avg_price: number | null;
+  gas_natural_licuado_avg_price:   number | null;
+  gases_licuados_petroleo_avg_price: number | null;
+  gasoleo_a_avg_price:            number | null;
+  gasoleo_b_avg_price:            number | null;
+  gasoleo_premium_avg_price:      number | null;
+  hidrogeno_avg_price:            number | null;
 }
 
 export type InfoFormated = {
   list:           GasStation[];
-  gasPrice95E10: string;
-  gasPrice95E5:  string;
-  gasPrice98E10: string;
-  gasPrice98E5:  string;
+  avgPrice95E10: string;
+  avgPrice95E5:  string;
+  avgPrice98E10: string;
+  avgPrice98E5:  string;
+  avgPriceBiodiesel:       string;
+  avgPriceBioetanol:       string;
+  avgPriceGasNaturalComprimido: string;
+  avgPriceGasNaturalLicuado:  string;
+  avgPriceGasesLicuadosPetroleo: string;
+  avgPriceGasoleoA:        string;
+  avgPriceGasoleoB:        string;
+  avgPriceGasoleoPremium:  string;
+  avgPriceHidrogeno:       string;
 }
 
 export type GasStation = {
@@ -141,3 +159,58 @@ export type GasStation = {
   Rótulo:                               string;
   "Tipo Venta":                         string;
 }
+
+export const SPANISH_PROVINCES_CODES: { [key: number]: string } = {
+  1: "Álava",
+  2: "Albacete",
+  3: "Alicante",
+  4: "Almería",
+  5: "Ávila",
+  6: "Badajoz",
+  7: "Baleares",
+  8: "Barcelona",
+  9: "Burgos",
+  10: "Cáceres",
+  11: "Cádiz",
+  12: "Castellón",
+  13: "Ciudad Real",
+  14: "Córdoba",
+  15: "A Coruña",
+  16: "Cuenca",
+  17: "Girona",
+  18: "Granada",
+  19: "Guadalajara",
+  20: "Guipúzcoa",
+  21: "Huelva",
+  22: "Huesca",
+  23: "Jaén",
+  24: "León",
+  25: "Lleida",
+  26: "La Rioja",
+  27: "Lugo",
+  28: "Madrid",
+  29: "Málaga",
+  30: "Murcia",
+  31: "Navarra",
+  32: "Ourense",
+  33: "Asturias",
+  34: "Palencia",
+  35: "Las Palmas",
+  36: "Pontevedra",
+  37: "Salamanca",
+  38: "Santa Cruz de Tenerife",
+  39: "Cantabria",
+  40: "Segovia",
+  41: "Sevilla",
+  42: "Soria",
+  43: "Tarragona",
+  44: "Teruel",
+  45: "Toledo",
+  46: "Valencia",
+  47: "Valladolid",
+  48: "Vizcaya",
+  49: "Zamora",
+  50: "Zaragoza",
+  51: "Ceuta",
+  52: "Melilla"
+};

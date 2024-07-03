@@ -14,10 +14,10 @@ export default async function CardWrapper({ info }: { info: InfoFormated }) {
   return (
     <>
       {info && <>
-        <Card title="Average Price Gasoline 95 E5" value={info.gasPrice95E5} />
-        <Card title="Average Price Gasoline 98 E5" value={info.gasPrice98E5} />
-        <Card title="Average Price Gasoline 95 E10" value={info.gasPrice95E10} />
-        <Card title="Average Price Gasoline 98 E10" value={info.gasPrice98E10} />
+        <Card title="Average Price Gasoline 95 E5" value={info.avgPrice95E5} />
+        <Card title="Average Price Gasoline 98 E5" value={info.avgPrice98E5} />
+        <Card title="Average Price Gasoline 95 E10" value={info.avgPrice95E10} />
+        <Card title="Average Price Gasoline 98 E10" value={info.avgPrice98E10} />
       </>}
     </>
   );

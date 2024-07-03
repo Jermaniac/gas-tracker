@@ -68,8 +68,11 @@ export async function fetchCardData(provinceId: number) {
   }
 }
 
+export async function fetchFilteredInvoices(){
+  
+}
 const ITEMS_PER_PAGE = 6;
-export async function fetchFilteredInvoices(
+export async function fetchFilteredInvoices2(
   query: string,
   currentPage: number,
 ) {

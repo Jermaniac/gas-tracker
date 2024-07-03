@@ -1,16 +1,43 @@
-import { APIGasolineResponse, Revenue } from './definitions';
+import { APIGasolineResponse, GasStation, Revenue } from './definitions';
+
+export const sortGasStationListByPriceType = (list: GasStation[], type: string) => {
+  return list.filter((gs) => gs[type]!=0).sort((a,b) => a[type] - b[type])
+}
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   const { info } = response;
-  const list = info.data
+  const list = sortGasStationListByPriceType(info.data)
 
-  const gasPrice95E5 = formatGasolinePrice(info.gas_95_e5_avg ?? 0);
-  const gasPrice98E5 = formatGasolinePrice(info.gas_98_e5_avg ?? 0);
-  const gasPrice95E10 = formatGasolinePrice(info.gas_95_e10_avg ?? 0);
-  const gasPrice98E10 = formatGasolinePrice(info.gas_98_e10_avg ?? 0);
+  const avgPrice95E5 = formatGasolinePrice(info.g95_e5_avg_price ?? 0);
+  const avgPrice98E5 = formatGasolinePrice(info.g98_e5_avg_price ?? 0);
+  const avgPrice95E10 = formatGasolinePrice(info.g95_e10_avg_price ?? 0);
+  const avgPrice98E10 = formatGasolinePrice(info.g98_e10_avg_price ?? 0);
+  const avgPriceBiodiesel = formatGasolinePrice(info.biodiesel_avg_price ?? 0);
+  const avgPriceBioetanol = formatGasolinePrice(info.bioetanol_avg_price ?? 0);
+  const avgPriceNaturalComprimido = formatGasolinePrice(info.gas_natural_comprimido_avg_price ?? 0);
+  const avgPriceNaturalLicuado = formatGasolinePrice(info.gas_natural_licuado_avg_price ?? 0);
+  const avgPriceLicuadosPetroleo = formatGasolinePrice(info.gases_licuados_petroleo_avg_price ?? 0);
+  const avgPriceGasoleoA = formatGasolinePrice(info.gasoleo_a_avg_price ?? 0);
+  const avgPriceGasoleoB = formatGasolinePrice(info.gasoleo_b_avg_price ?? 0);
+  const avgPriceGasoleoPremium = formatGasolinePrice(info.gasoleo_premium_avg_price ?? 0);
+  const avgPriceHidrogeno = formatGasolinePrice(info.hidrogeno_avg_price ?? 0);
 
-  return { gasPrice95E5, gasPrice98E5, gasPrice95E10, gasPrice98E10, list};
-}
+  return { 
+    avgPrice95E5, 
+    avgPrice98E5, 
+    avgPrice95E10, 
+    avgPrice98E10, 
+    avgPriceBiodiesel, 
+    avgPriceBioetanol, 
+    avgPriceNaturalComprimido, 
+    avgPriceNaturalLicuado, 
+    avgPriceLicuadosPetroleo, 
+    avgPriceGasoleoA, 
+    avgPriceGasoleoB, 
+    avgPriceGasoleoPremium, 
+    avgPriceHidrogeno, 
+    list 
+  };}
 
 export const formatGasolinePrice = (amount: number) => {
   return amount == 0 ? 'No Data' : formatCurrency(amount)
