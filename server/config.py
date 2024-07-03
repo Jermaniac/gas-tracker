@@ -23,10 +23,10 @@ GASOLINE_TYPES = [
 ]
 
 CUSTOM_NAMES = {
-    'Precio Gasolina 95 E5': '95_e5_avg_price',
-    'Precio Gasolina 98 E5': '98_e5_avg_price',
-    'Precio Gasolina 95 E10': '95_e10_avg_price',
-    'Precio Gasolina 98 E10': '98_e10_avg_price',
+    'Precio Gasolina 95 E5': 'g95_e5_avg_price',
+    'Precio Gasolina 98 E5': 'g98_e5_avg_price',
+    'Precio Gasolina 95 E10': 'g95_e10_avg_price',
+    'Precio Gasolina 98 E10': 'g98_e10_avg_price',
     'Precio Biodiesel': 'biodiesel_avg_price',
     'Precio Bioetanol': 'bioetanol_avg_price',
     'Precio Gas Natural Comprimido': 'gas_natural_comprimido_avg_price',
