@@ -10,7 +10,9 @@ export default async function GasPricesInfo({ provinceId }: { provinceId: number
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <CardWrapper info={response} />
                 </div>
-                <GasStationList info={response} />
+                <div className="mt-6">
+                    <GasStationList info={response} />
+                </div>
             </>}
         </>
     );
