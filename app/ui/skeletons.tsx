@@ -150,6 +150,11 @@ export function InvoicesMobileSkeleton() {
 export function InvoicesTableSkeleton() {
   return (
     <div className="mt-6 flow-root">
+      <div className="whitespace-nowrap py-3">
+        <div className="h-6 w-56 rounded bg-gray-50"></div>
+      </div>
+      <div className="h-10 w-full rounded-lg bg-gray-50 p-2 mb-10 md:pt-0">
+      </div>
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
@@ -167,7 +172,7 @@ export function InvoicesTableSkeleton() {
                   Code
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Province
+                  Name
                 </th>
               </tr>
             </thead>
