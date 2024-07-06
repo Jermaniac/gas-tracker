@@ -2,7 +2,7 @@ import { fetchCardData } from '@/app/lib/data';
 import CardWrapper from './cards';
 import GasStationList from './gas-station-list';
 
-export default async function GasPricesInfo({ provinceId }: { provinceId: number }) {
+export default async function GasPricesInfo({ provinceId }: { provinceId: string }) {
     const response = await fetchCardData(provinceId);
     return (
         <>

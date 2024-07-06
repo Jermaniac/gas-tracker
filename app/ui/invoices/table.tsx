@@ -11,6 +11,7 @@ export default function InvoicesTable({
   currentPage: number;
 }) {
   const filteredPostalCodes = Object.entries(SPANISH_PROVINCES_CODES)
+    .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
     .filter(([, name]) => name.toLowerCase().includes(query.toLowerCase()));
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
