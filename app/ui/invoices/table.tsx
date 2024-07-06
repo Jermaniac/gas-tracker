@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import { DashboardLink, DeleteInvoice } from '@/app/ui/invoices/buttons';
+import { DashboardLink } from '@/app/ui/invoices/buttons';
 import { SPANISH_PROVINCES_CODES } from '@/app/lib/definitions';
 
 const ITEMS_PER_PAGE = 10;
