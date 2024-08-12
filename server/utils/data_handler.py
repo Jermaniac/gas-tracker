@@ -58,8 +58,8 @@ def process_gas_data(data, id_provincia):
     filtered_df = sanitize_dataframe(filtered_df)
 
     result = {
-        **averages,
-        "data": filtered_df.to_dict(orient='records')
+        "averages": **averages,
+        "stations": filtered_df.to_dict(orient='records')
     }
     
     return result
