@@ -92,7 +92,11 @@ export type APIGasolineResponse = {
 }
 
 export type Info = {
-  data:           GasStation[];
+  stations: GasStation[];
+  averages: Averages;
+}
+
+export type Averages = {
   g95_e10_avg_price: number | null;
   g95_e5_avg_price:  number | null;
   g98_e10_avg_price: number | null;
@@ -109,7 +113,11 @@ export type Info = {
 }
 
 export type InfoFormated = {
-  list:           GasStation[];
+  list: GasStation[];
+  averages: AveragesFormated;
+}
+
+export type AveragesFormated = {
   avgPrice95E10: string;
   avgPrice95E5:  string;
   avgPrice98E10: string;

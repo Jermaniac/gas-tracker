@@ -1,12 +1,12 @@
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { lusitana } from '@/app/ui/fonts';
-import { InfoFormated } from '@/app/lib/definitions';
+import { GasStation } from '@/app/lib/definitions';
 
 const LIMITED_LIST_NUMBER = 5
 
-export default async function GasStationList({ info }: { info: InfoFormated }) {
-  const gasStationsCount = info.list.length
+export default async function GasStationList({ list }: { list: GasStation[] }) {
+  const gasStationsCount = list.length
   
   return (
     <div className="flex w-full flex-col md:col-span-4">
@@ -15,7 +15,7 @@ export default async function GasStationList({ info }: { info: InfoFormated }) {
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
-          {info.list.splice(0, LIMITED_LIST_NUMBER).map((gasStation, i) => {
+          {list.slice(0, LIMITED_LIST_NUMBER).map((gasStation, i) => {
             return (
               <div
                 key={`${gasStation.Rótulo}_${i}`}

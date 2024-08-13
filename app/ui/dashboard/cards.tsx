@@ -3,21 +3,21 @@ import {
   ClockIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import { InfoFormated } from '@/app/lib/definitions';
+import { AveragesFormated } from '@/app/lib/definitions';
 
 const iconMap = {
   price: BanknotesIcon,
   pending: ClockIcon,
 };
 
-export default async function CardWrapper({ info }: { info: InfoFormated }) {
+export default async function CardWrapper({ averages }: { averages: AveragesFormated }) {
   return (
     <>
-      {info && <>
-        <Card title="Average Price Gasoline 95 E5" value={info.avgPrice95E5} />
-        <Card title="Average Price Gasoline 98 E5" value={info.avgPrice98E5} />
-        <Card title="Average Price Gasoline 95 E10" value={info.avgPrice95E10} />
-        <Card title="Average Price Gasoline 98 E10" value={info.avgPrice98E10} />
+      {averages && <>
+        <Card title="Average Price Gasoline 95 E5" value={averages.avgPrice95E5} />
+        <Card title="Average Price Gasoline 98 E5" value={averages.avgPrice98E5} />
+        <Card title="Average Price Gasoline 95 E10" value={averages.avgPrice95E10} />
+        <Card title="Average Price Gasoline 98 E10" value={averages.avgPrice98E10} />
       </>}
     </>
   );

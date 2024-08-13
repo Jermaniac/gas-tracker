@@ -12,23 +12,27 @@ export const sortGasStationListByPriceType = (list: GasStation[]) => {
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   const { info } = response;
-  const list = sortGasStationListByPriceType(info.data)
+  // const list = info.stations;
 
-  const avgPrice95E5 = formatGasolinePrice(info.g95_e5_avg_price ?? 0);
-  const avgPrice98E5 = formatGasolinePrice(info.g98_e5_avg_price ?? 0);
-  const avgPrice95E10 = formatGasolinePrice(info.g95_e10_avg_price ?? 0);
-  const avgPrice98E10 = formatGasolinePrice(info.g98_e10_avg_price ?? 0);
-  const avgPriceBiodiesel = formatGasolinePrice(info.biodiesel_avg_price ?? 0);
-  const avgPriceBioetanol = formatGasolinePrice(info.bioetanol_avg_price ?? 0);
-  const avgPriceGasNaturalComprimido = formatGasolinePrice(info.gas_natural_comprimido_avg_price ?? 0);
-  const avgPriceGasNaturalLicuado = formatGasolinePrice(info.gas_natural_licuado_avg_price ?? 0);
-  const avgPriceGasesLicuadosPetroleo = formatGasolinePrice(info.gases_licuados_petroleo_avg_price ?? 0);
-  const avgPriceGasoleoA = formatGasolinePrice(info.gasoleo_a_avg_price ?? 0);
-  const avgPriceGasoleoB = formatGasolinePrice(info.gasoleo_b_avg_price ?? 0);
-  const avgPriceGasoleoPremium = formatGasolinePrice(info.gasoleo_premium_avg_price ?? 0);
-  const avgPriceHidrogeno = formatGasolinePrice(info.hidrogeno_avg_price ?? 0);
+  const list = sortGasStationListByPriceType(info.stations);
 
-  return { 
+  const list2 = [...list]
+
+  const avgPrice95E5 = formatGasolinePrice(info.averages.g95_e5_avg_price ?? 0);
+  const avgPrice98E5 = formatGasolinePrice(info.averages.g98_e5_avg_price ?? 0);
+  const avgPrice95E10 = formatGasolinePrice(info.averages.g95_e10_avg_price ?? 0);
+  const avgPrice98E10 = formatGasolinePrice(info.averages.g98_e10_avg_price ?? 0);
+  const avgPriceBiodiesel = formatGasolinePrice(info.averages.biodiesel_avg_price ?? 0);
+  const avgPriceBioetanol = formatGasolinePrice(info.averages.bioetanol_avg_price ?? 0);
+  const avgPriceGasNaturalComprimido = formatGasolinePrice(info.averages.gas_natural_comprimido_avg_price ?? 0);
+  const avgPriceGasNaturalLicuado = formatGasolinePrice(info.averages.gas_natural_licuado_avg_price ?? 0);
+  const avgPriceGasesLicuadosPetroleo = formatGasolinePrice(info.averages.gases_licuados_petroleo_avg_price ?? 0);
+  const avgPriceGasoleoA = formatGasolinePrice(info.averages.gasoleo_a_avg_price ?? 0);
+  const avgPriceGasoleoB = formatGasolinePrice(info.averages.gasoleo_b_avg_price ?? 0);
+  const avgPriceGasoleoPremium = formatGasolinePrice(info.averages.gasoleo_premium_avg_price ?? 0);
+  const avgPriceHidrogeno = formatGasolinePrice(info.averages.hidrogeno_avg_price ?? 0);
+
+  const averages = { 
     avgPrice95E5, 
     avgPrice98E5, 
     avgPrice95E10, 
@@ -41,9 +45,11 @@ export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
     avgPriceGasoleoA, 
     avgPriceGasoleoB, 
     avgPriceGasoleoPremium, 
-    avgPriceHidrogeno, 
-    list 
-  };}
+    avgPriceHidrogeno 
+  }
+
+  return { averages, list, list2}
+}
 
 export const formatGasolinePrice = (amount: number) => {
   return amount == 0 ? 'No Data' : formatCurrency(amount)
