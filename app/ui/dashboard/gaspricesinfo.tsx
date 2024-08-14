@@ -5,7 +5,7 @@ import GasStationList from './gas-station-list';
 
 const Map = dynamic(() => import('../map/index'), { ssr: false });
 
-export default async function GasPricesInfo({ provinceId }: { provinceId: string }) {
+export default async function GasPricesInfo ({ provinceId }: { provinceId: string }) {
     const { averages, list, list2 } = await fetchCardData(provinceId);
     return (
         <>
@@ -18,7 +18,6 @@ export default async function GasPricesInfo({ provinceId }: { provinceId: string
                 </div>
                 <div>
                     <Map posix={[40.416775, -3.703790]} list={list2} />
-                    {/* <MapGas list={list} posix={[40.416775, -3.703790]} /> */}
                 </div>
             </>}
         </>
