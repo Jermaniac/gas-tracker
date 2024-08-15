@@ -3,7 +3,7 @@ import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import { lusitana } from '@/app/ui/fonts';
 
-export default async function Page({
+export default async function Page ({
     searchParams,
 }: {
     searchParams?: {
@@ -21,9 +21,9 @@ export default async function Page({
             <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
                 <Search placeholder="Search spanish province..." />
             </div>
-                <Table query={query} currentPage={currentPage} />
+            <Table query={query} currentPage={currentPage} />
             <div className="mt-5 flex w-full justify-center">
-                <Pagination totalPages={6} />
+                <Pagination totalPages={100} />
             </div>
         </div>
     );
