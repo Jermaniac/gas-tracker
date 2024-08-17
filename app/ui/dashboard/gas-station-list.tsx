@@ -5,9 +5,9 @@ import { GasStation } from '@/app/lib/definitions';
 
 const LIMITED_LIST_NUMBER = 5
 
-export default async function GasStationList({ list }: { list: GasStation[] }) {
+export default function GasStationList ({ list }: { list: GasStation[] }) {
   const gasStationsCount = list.length
-  
+
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>

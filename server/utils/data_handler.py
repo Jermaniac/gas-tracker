@@ -34,8 +34,8 @@ def retrieve_gas_data():
 
 def get_filtered_gas_data_by_province(id_provincia):
     raw_data = retrieve_gas_data()
-    proccesed_data = process_gas_data(raw_data ,id_provincia)
-    return proccesed_data
+    processed_data = process_gas_data(raw_data, id_provincia)
+    return processed_data
 
 def sanitize_value(value):
     if pd.isna(value) or value == float('inf') or value == -float('inf'):
@@ -47,7 +47,6 @@ def sanitize_dataframe(df):
     df[numeric_columns] = df[numeric_columns].fillna(0)
     return df
 
-
 def process_gas_data(data, id_provincia):
     df = pd.DataFrame(data[LIST_PRICES_NAME])
 
@@ -57,11 +56,32 @@ def process_gas_data(data, id_provincia):
     
     filtered_df = sanitize_dataframe(filtered_df)
 
+    best_stations = {}
+
+    # Process each fuel type
+    for fuel_type in GASOLINE_TYPES:
+        if fuel_type in filtered_df.columns:
+            # Convert the fuel type's price column to numeric
+            filtered_df[fuel_type] = pd.to_numeric(filtered_df[fuel_type].replace(EMPTY_STRING, float('nan')), errors='coerce')
+
+            # Drop rows where the price is NaN or zero
+            valid_df = filtered_df[filtered_df[fuel_type].notna() & (filtered_df[fuel_type] > 0)]
+
+            # Check if there are any valid entries
+            if not valid_df.empty:
+                # Sort by the fuel type's price column, ascending (lowest price first)
+                sorted_df = valid_df.sort_values(by=fuel_type, ascending=True)
+                
+                # Select top 5 stations with the lowest prices
+                top_stations = sorted_df.head(5).to_dict(orient='records')
+                best_stations[CUSTOM_NAMES[fuel_type]] = top_stations
+
+    # Construct the final result
     result = {
         "averages": averages,
-        "stations": filtered_df.to_dict(orient='records')
+        "bestStations": best_stations
     }
-    
+
     return result
 
 def calculate_averages(df, column_names):
