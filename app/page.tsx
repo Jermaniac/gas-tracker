@@ -7,9 +7,11 @@ export default async function Page ({
   searchParams,
 }: {
   searchParams?: {
+    query?: string;
     page?: string;
   };
 }) {
+  const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
   return (
@@ -30,9 +32,11 @@ export default async function Page ({
           <h1 className={`${lusitana.className} text-2xl font-semibold text-gray-800 mb-4`}>
             Select a Province
           </h1>
-          <Table currentPage={currentPage} />
+          <div>
+            <Table query={query} currentPage={currentPage} />
+          </div>
           <div className="mt-8 flex justify-center">
-            <Pagination totalPages={6} />
+            <Pagination totalPages={7} />
           </div>
         </section>
       </section>

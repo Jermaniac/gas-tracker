@@ -119,7 +119,7 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 }
 
 export const sortProvinces = (query: string) => {
-  console.log('ey',query)
   return Object.entries(SPANISH_PROVINCES_CODES)
     .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
+    .filter(([, name]) => name.toLowerCase().includes(query.toLowerCase()))
 }

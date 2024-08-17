@@ -1,22 +1,23 @@
 import { DashboardLink } from '@/app/ui/invoices/buttons';
 import { sortProvinces } from '@/app/lib/utils';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 8;
 
 export default function ProvincesTable ({
+  query,
   currentPage,
 }: {
   query: string;
   currentPage: number;
 }) {
-  const filteredPostalCodes = sortProvinces()
+  const filteredPostalCodes = sortProvinces(query)
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const paginatedPostalCodes = filteredPostalCodes.slice(startIndex, endIndex);
 
   return (
-    <div className="mt-6 flow-root">
+    <div className="mt-3 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
@@ -25,12 +26,9 @@ export default function ProvincesTable ({
                 key={code}
                 className="mb-2 w-full rounded-md bg-white p-4"
               >
-                <div className="flex items-center justify-between border-b pb-4">
-                  <div>
-                    <div className="mb-2 flex items-center">
-                      <p>{name}</p>
-                    </div>
-                    <p className="text-sm text-gray-500">Code: {code}</p>
+                <div className="flex items-center justify-between">
+                  <div className="mb-2 flex items-center">
+                    <p>{name}</p>
                   </div>
                   <div className="mb-2 flex items-center">
                     <DashboardLink id={code} />
