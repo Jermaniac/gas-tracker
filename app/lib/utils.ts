@@ -12,7 +12,7 @@ export const sortGasStationListByPriceType = (list: GasStation[]) => {
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   const { info } = response;
-  const list = info.stations;
+  const list = info.bestStations;
 
   const gas95E5 = formatGasolinePrice(info.averages.g95_e5_avg_price ?? 0);
   const gas98E5 = formatGasolinePrice(info.averages.g98_e5_avg_price ?? 0);

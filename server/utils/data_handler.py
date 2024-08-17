@@ -14,7 +14,7 @@ ZERO_STRING = config.ZERO_STRING
 EMPTY_STRING = config.EMPTY_STRING
 GASOLINE_TYPES = config.GASOLINE_TYPES
 CUSTOM_NAMES = config.CUSTOM_NAMES
-
+FUEL_NAMES = config.FUEL_NAMES
 class APIException(Exception):
     pass
 
@@ -74,7 +74,7 @@ def process_gas_data(data, id_provincia):
                 
                 # Select top 5 stations with the lowest prices
                 top_stations = sorted_df.head(5).to_dict(orient='records')
-                best_stations[CUSTOM_NAMES[fuel_type]] = top_stations
+                best_stations[FUEL_NAMES[fuel_type]] = top_stations
 
     # Construct the final result
     result = {

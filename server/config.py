@@ -37,3 +37,19 @@ CUSTOM_NAMES = {
     'Precio Gasoleo Premium': 'gasoleo_premium_avg_price',
     'Precio Hidrogeno': 'hidrogeno_avg_price'
 }
+
+FUEL_NAMES = {
+    'gas95E5': "Gasoline 95 E5",
+    'gas98E5': "Gasoline 98 E5",
+    'gas95E10': "Gasoline 95 E10",
+    'gas98E10': "Gasoline 98 E10",
+    'biodiesel': "Biodiesel",
+    'bioetanol': "Bioethanol",
+    'gasNaturalComprimido': "Compressed Natural Gas (CNG)",
+    'gasNaturalLicuado': "Liquefied Natural Gas (LNG)",
+    'gasesLicuadosPetroleo': "Liquefied Petroleum Gas (LPG)",
+    'gasoleoA': "Diesel A",
+    'gasoleoB': "Diesel B",
+    'gasoleoPremium': "Premium Diesel",
+    'hidrogeno': "Hydrogen"
+}
