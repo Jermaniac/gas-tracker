@@ -1,18 +1,15 @@
 import { DashboardLink } from '@/app/ui/invoices/buttons';
-import { SPANISH_PROVINCES_CODES } from '@/app/lib/definitions';
+import { sortProvinces } from '@/app/lib/utils';
 
 const ITEMS_PER_PAGE = 10;
 
-export default function InvoicesTable({
-  query,
+export default function ProvincesTable ({
   currentPage,
 }: {
   query: string;
   currentPage: number;
 }) {
-  const filteredPostalCodes = Object.entries(SPANISH_PROVINCES_CODES)
-    .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
-    .filter(([, name]) => name.toLowerCase().includes(query.toLowerCase()));
+  const filteredPostalCodes = sortProvinces()
 
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;

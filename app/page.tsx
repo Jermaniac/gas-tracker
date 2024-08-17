@@ -1,4 +1,3 @@
-
 import { lusitana } from '@/app/ui/fonts';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
@@ -8,34 +7,35 @@ export default async function Page ({
   searchParams,
 }: {
   searchParams?: {
-    query?: string;
     page?: string;
   };
 }) {
-  const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
+
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="mt-4 flex grow flex-col justify-center items-center gap-4 md:flex-row">
-        <div className="flex flex-col gap-6 rounded-lg bg-gray-50 px-6 py-10 max-w-xs md:w-2/5 md:px-20 md:max-w-md">
-          <p className={`${lusitana.className} text-xl text-gray-800 md:text-2xl md:leading-normal`}>
-            <strong className="text-3xl">Gas Tracker</strong> <br />
-            This is a dashboard app where you can find real gasoline prices from every spanish province.
+    <main className="flex min-h-screen flex-col items-center p-6 bg-gray-100">
+      <section className="mt-6 flex flex-col w-full max-w-4xl bg-white rounded-lg shadow-lg md:flex-row">
+        <aside className="flex flex-col items-center gap-6 p-8 bg-gray-50 rounded-t-lg md:rounded-l-lg md:rounded-tr-none md:w-1/3">
+          <h2 className={`${lusitana.className} text-3xl font-bold text-gray-800 text-center`}>
+            Gas Tracker
+          </h2>
+          <p className={`${lusitana.className} text-lg text-gray-700 text-center`}>
+            Discover real-time gasoline prices across Spanish provinces.
           </p>
-          <div className="w-full">
-            <div className="flex w-full items-center justify-between">
-              <h1 className={`${lusitana.className} text-2xl`}>Select a province to see stats</h1>
-            </div>
-            <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-              <Search placeholder="Search spanish province..." />
-            </div>
-            <Table query={query} currentPage={currentPage} />
-            <div className="mt-5 flex w-full justify-center">
-              <Pagination totalPages={6} />
-            </div>
+          <div className={`${lusitana.className}`}>
+            <Search placeholder="Search province..." />
           </div>
-        </div>
-      </div>
+        </aside>
+        <section className="flex flex-col flex-grow p-6 md:p-8">
+          <h1 className={`${lusitana.className} text-2xl font-semibold text-gray-800 mb-4`}>
+            Select a Province
+          </h1>
+          <Table currentPage={currentPage} />
+          <div className="mt-8 flex justify-center">
+            <Pagination totalPages={6} />
+          </div>
+        </section>
+      </section>
     </main>
   );
 }

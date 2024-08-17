@@ -15,7 +15,7 @@ interface MapProps {
 }
 
 const defaults = {
-  zoom: 19,
+  zoom: 5,
 };
 
 const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
@@ -23,7 +23,7 @@ const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
 
   useEffect(() => {
     if (list && list.length > 0) {
-      const formattedList = list.slice(0,5).map(item => ({
+      const formattedList = list.slice(0, 5).map(item => ({
         position: [
           parseFloat(item['Latitud'].replace(",", ".")),
           parseFloat(item['Longitud (WGS84)'].replace(",", "."))
@@ -46,7 +46,7 @@ const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        { newList && newList.map((item, index) => (
+        {newList && newList.map((item, index) => (
           <Marker key={index} position={item.position} draggable={false}>
             <Popup>{item.name}</Popup>
           </Marker>

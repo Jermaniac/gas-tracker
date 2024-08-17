@@ -1,4 +1,4 @@
-import { APIGasolineResponse, GasStation, Revenue } from './definitions';
+import { APIGasolineResponse, GasStation, Revenue, SPANISH_PROVINCES_CODES } from './definitions';
 
 export const sortGasStationListByPriceType = (list: GasStation[]) => {
   return list.filter((gs) => typeof gs['Precio Gasolina 95 E5'] === 'number' && gs['Precio Gasolina 95 E5'] !== 0)
@@ -116,4 +116,10 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
       3,
       totalPages,
   ]
+}
+
+export const sortProvinces = (query: string) => {
+  console.log('ey',query)
+  return Object.entries(SPANISH_PROVINCES_CODES)
+    .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
 }
