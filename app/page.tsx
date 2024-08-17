@@ -3,6 +3,8 @@ import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import Pagination from '@/app/ui/invoices/pagination';
 
+const TOTAL_PAGES = 7
+
 export default async function Page ({
   searchParams,
 }: {
@@ -36,7 +38,7 @@ export default async function Page ({
             <Table query={query} currentPage={currentPage} />
           </div>
           <div className="mt-8 flex justify-center">
-            <Pagination totalPages={7} />
+            <Pagination totalPages={TOTAL_PAGES} />
           </div>
         </section>
       </section>

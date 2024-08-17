@@ -36,7 +36,9 @@ export default function Pagination ({ totalPages }: { totalPages: number }) {
 
           const isSecondPage = page === 2
           const isSecondToLastPage = page === totalPages - 1
-          const notHidePage = (position === 'first' || position === 'last') || (isSecondPage || isSecondToLastPage)
+          const isFirstOrLastPage = (position === 'first' || position === 'last')
+          const isSecondOrSecondToLastPage = (isSecondPage || isSecondToLastPage)
+          const notHidePage = isFirstOrLastPage || isSecondOrSecondToLastPage
 
           return (
             <PaginationNumber
