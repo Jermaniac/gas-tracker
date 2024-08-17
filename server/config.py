@@ -39,17 +39,17 @@ CUSTOM_NAMES = {
 }
 
 FUEL_NAMES = {
-    'gas95E5': "Gasoline 95 E5",
-    'gas98E5': "Gasoline 98 E5",
-    'gas95E10': "Gasoline 95 E10",
-    'gas98E10': "Gasoline 98 E10",
-    'biodiesel': "Biodiesel",
-    'bioetanol': "Bioethanol",
-    'gasNaturalComprimido': "Compressed Natural Gas (CNG)",
-    'gasNaturalLicuado': "Liquefied Natural Gas (LNG)",
-    'gasesLicuadosPetroleo': "Liquefied Petroleum Gas (LPG)",
-    'gasoleoA': "Diesel A",
-    'gasoleoB': "Diesel B",
-    'gasoleoPremium': "Premium Diesel",
-    'hidrogeno': "Hydrogen"
+    'Precio Gasolina 95 E5': 'gas95E5',
+    'Precio Gasolina 98 E5': 'gas98E5',
+    'Precio Gasolina 95 E10': 'gas95E10',
+    'Precio Gasolina 98 E10': 'gas98E10',
+    'Precio Biodiesel': 'biodiesel',
+    'Precio Bioetanol': 'bioetanol',
+    'Precio Gas Natural Comprimido': 'gasNaturalComprimido',
+    'Precio Gas Natural Licuado': 'gasNaturalLicuado',
+    'Precio Gases licuados del petróleo': 'gasesLicuadosPetroleo',
+    'Precio Gasoleo A': 'gasoleoA',
+    'Precio Gasoleo B': 'gasoleoB',
+    'Precio Gasoleo Premium': 'gasoleoPremium',
+    'Precio Hidrogeno': 'hidrogeno'
 }
