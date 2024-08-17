@@ -1,7 +1,6 @@
 import { DashboardLink } from '@/app/ui/invoices/buttons';
 import { sortProvinces } from '@/app/lib/utils';
-
-const ITEMS_PER_PAGE = 8;
+import { ITEMS_PROVINCES_PER_PAGE } from '@/app/lib/constants';
 
 export default function ProvincesTable ({
   query,
@@ -12,8 +11,8 @@ export default function ProvincesTable ({
 }) {
   const filteredPostalCodes = sortProvinces(query)
 
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const startIndex = (currentPage - 1) * ITEMS_PROVINCES_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PROVINCES_PER_PAGE;
   const paginatedPostalCodes = filteredPostalCodes.slice(startIndex, endIndex);
 
   return (

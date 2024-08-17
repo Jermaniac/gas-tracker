@@ -2,8 +2,7 @@ import { lusitana } from '@/app/ui/fonts';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import Pagination from '@/app/ui/invoices/pagination';
-
-const TOTAL_PAGES = 7
+import { TOTAL_PROVINCES_PAGES } from '@/app/lib/constants';
 
 export default async function Page ({
   searchParams,
@@ -31,14 +30,14 @@ export default async function Page ({
           </div>
         </aside>
         <section className="flex flex-col flex-grow p-6 md:p-8">
-          <h1 className={`${lusitana.className} text-2xl font-semibold text-gray-800 mb-4`}>
+          <h1 className={`${lusitana.className} flex text-2xl justify-center font-semibold text-gray-800 mb-4`}>
             Select a Province
           </h1>
           <div>
             <Table query={query} currentPage={currentPage} />
           </div>
           <div className="mt-8 flex justify-center">
-            <Pagination totalPages={TOTAL_PAGES} />
+            <Pagination totalPages={TOTAL_PROVINCES_PAGES} />
           </div>
         </section>
       </section>

@@ -1,0 +1,3 @@
+export const TOTAL_PROVINCES_PAGES = 7
+
+export const ITEMS_PROVINCES_PER_PAGE = 8

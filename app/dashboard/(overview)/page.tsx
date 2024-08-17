@@ -2,6 +2,7 @@ import Pagination from '@/app/ui/invoices/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/invoices/table';
 import { lusitana } from '@/app/ui/fonts';
+import { TOTAL_PROVINCES_PAGES } from '@/app/lib/constants';
 
 export default async function Page ({
     searchParams,
@@ -23,7 +24,7 @@ export default async function Page ({
             </div>
             <Table query={query} currentPage={currentPage} />
             <div className="mt-5 flex w-full justify-center">
-                <Pagination totalPages={100} />
+                <Pagination totalPages={TOTAL_PROVINCES_PAGES} />
             </div>
         </div>
     );
