@@ -19,7 +19,8 @@ GASOLINE_TYPES = [
     'Precio Gasoleo A',
     'Precio Gasoleo B',
     'Precio Gasoleo Premium',
-    'Precio Hidrogeno'
+    'Precio Hidrogeno',
+    'Precio Gasolina 95 E5 Premium'
 ]
 
 CUSTOM_NAMES = {
@@ -35,7 +36,8 @@ CUSTOM_NAMES = {
     'Precio Gasoleo A': 'gasoleo_a_avg_price',
     'Precio Gasoleo B': 'gasoleo_b_avg_price',
     'Precio Gasoleo Premium': 'gasoleo_premium_avg_price',
-    'Precio Hidrogeno': 'hidrogeno_avg_price'
+    'Precio Hidrogeno': 'hydrogen_avg_price',
+    'Precio Gasolina 95 E5 Premium': 'g95_e5_premium_avg_price'
 }
 
 FUEL_NAMES = {
@@ -51,5 +53,41 @@ FUEL_NAMES = {
     'Precio Gasoleo A': 'gasoleoA',
     'Precio Gasoleo B': 'gasoleoB',
     'Precio Gasoleo Premium': 'gasoleoPremium',
-    'Precio Hidrogeno': 'hidrogeno'
+    'Precio Hidrogeno': 'hydrogen',
+    'Precio Gasolina 95 E5 Premium': 'gas95E5Premium'
+}
+
+STATION_KEY_MAPPING = {
+    'Rótulo': 'stationName',
+    'Dirección': 'address',
+    'Municipio': 'municipality',
+    'C.P.': 'postalCode',
+    'Horario': 'hours',
+    'IDCCAA': 'autonomousCommunityId',
+    'IDEESS': 'stationId',
+    'IDMunicipio': 'municipalityId',
+    'IDProvincia': 'provinceId',
+    'Latitud': 'latitude',
+    'Longitud (WGS84)': 'longitude',
+    'Margen': 'margin',
+    'Localidad': 'locality',
+    'Precio Gasolina 95 E5': 'price95E5',
+    'Precio Gasolina 98 E5': 'price98E5',
+    'Precio Gasolina 95 E10': 'price95E10',
+    'Precio Gasolina 98 E10': 'price98E10',
+    'Precio Gasoleo A': 'priceGasoleoA',
+    'Precio Gasoleo B': 'priceGasoleoB',
+    'Precio Gasoleo Premium': 'priceGasoleoPremium',
+    'Precio Biodiesel': 'priceBiodiesel',
+    'Precio Bioetanol': 'priceBioethanol',
+    'Precio Gas Natural Comprimido': 'priceGasNaturalComprimido',
+    'Precio Gas Natural Licuado': 'priceGasNaturalLicuado',
+    'Precio Gases licuados del petróleo': 'priceGasesLicuadosPetroleo',
+    'Precio Hidrogeno': 'priceHydrogen',
+    '% BioEtanol': 'bioethanolPercentage',
+    '% Éster metílico': 'methylEsterPercentage',
+    'Provincia': 'province',
+    'Remisión': 'submission',
+    'Tipo Venta': 'saleType',
+    'Precio Gasolina 95 E5 Premium': 'price95E5Premium'
 }

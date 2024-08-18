@@ -31,7 +31,7 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ averages, list }) => 
                 <CardWrapper average={averages[selectedFuelType] || 'No Data'} />
             </div>
             <div className="mt-6">
-                <GasStationList list={list[selectedFuelType]} />
+                <GasStationList list={list[selectedFuelType]} selectedFuel={selectedFuelType} />
             </div>
         </>
     );

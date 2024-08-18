@@ -11,7 +11,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 def get_info_province(id_provincia):
     try:
         data = get_filtered_gas_data_by_province(id_provincia)
-        return jsonify({"info": data})
+        return jsonify({"gasStationInfo": data})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     

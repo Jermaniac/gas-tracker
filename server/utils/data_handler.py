@@ -15,6 +15,8 @@ EMPTY_STRING = config.EMPTY_STRING
 GASOLINE_TYPES = config.GASOLINE_TYPES
 CUSTOM_NAMES = config.CUSTOM_NAMES
 FUEL_NAMES = config.FUEL_NAMES
+STATION_KEY_MAPPING = config.STATION_KEY_MAPPING
+
 class APIException(Exception):
     pass
 
@@ -43,53 +45,40 @@ def sanitize_value(value):
     return round(value, 3)
 
 def sanitize_dataframe(df):
-    numeric_columns = df.select_dtypes(include='number').columns
-    df[numeric_columns] = df[numeric_columns].fillna(0)
+    for column in GASOLINE_TYPES:
+        if column in df.columns:
+            df[column] = df[column].astype(str).str.replace(COMMA_STRING, DOT_STRING)
+            df[column] = pd.to_numeric(df[column].replace(EMPTY_STRING, 0), errors='coerce').fillna(0)
     return df
 
 def process_gas_data(data, id_provincia):
     df = pd.DataFrame(data[LIST_PRICES_NAME])
 
     filtered_df = df[df[ID_PROVINCIA_STRING] == id_provincia].copy()
-
-    averages = calculate_averages(filtered_df, GASOLINE_TYPES)
     
     filtered_df = sanitize_dataframe(filtered_df)
 
-    best_stations = {}
+    result = {}
 
-    # Process each fuel type
     for fuel_type in GASOLINE_TYPES:
         if fuel_type in filtered_df.columns:
-            # Convert the fuel type's price column to numeric
-            filtered_df[fuel_type] = pd.to_numeric(filtered_df[fuel_type].replace(EMPTY_STRING, float('nan')), errors='coerce')
-
-            # Drop rows where the price is NaN or zero
             valid_df = filtered_df[filtered_df[fuel_type].notna() & (filtered_df[fuel_type] > 0)]
 
-            # Check if there are any valid entries
             if not valid_df.empty:
-                # Sort by the fuel type's price column, ascending (lowest price first)
-                sorted_df = valid_df.sort_values(by=fuel_type, ascending=True)
-                
-                # Select top 5 stations with the lowest prices
-                top_stations = sorted_df.head(5).to_dict(orient='records')
-                best_stations[FUEL_NAMES[fuel_type]] = top_stations
+                mean_value = valid_df[fuel_type].mean()
+                sanitized_mean_value = sanitize_value(mean_value)
 
-    # Construct the final result
-    result = {
-        "averages": averages,
-        "bestStations": best_stations
-    }
+                sorted_df = valid_df.sort_values(by=fuel_type, ascending=True)
+                top_stations = sorted_df.head(5).to_dict(orient='records')
+
+                customized_stations = []
+                for station in top_stations:
+                    customized_station = {STATION_KEY_MAPPING.get(key, key): value for key, value in station.items()}
+                    customized_stations.append(customized_station)
+                
+                result[FUEL_NAMES[fuel_type]] = {
+                    "bestStations": customized_stations,
+                    "average": sanitized_mean_value
+                }
 
     return result
-
-def calculate_averages(df, column_names):
-    averages = {}
-    for column in column_names:
-        df[column] = df[column].astype(str).str.replace(COMMA_STRING, DOT_STRING)
-        df[column] = pd.to_numeric(df[column], errors='coerce')
-        mean_value = df[column].mean()
-        sanitized_mean_value = sanitize_value(mean_value)
-        averages[CUSTOM_NAMES[column]] = sanitize_value(sanitized_mean_value)
-    return averages

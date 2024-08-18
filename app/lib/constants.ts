@@ -15,5 +15,6 @@ export const FUEL_TYPES : Record<string, string> = {
     gasoleoA: "Diesel A",
     gasoleoB: "Diesel B",
     gasoleoPremium: "Premium Diesel",
-    hidrogeno: "Hydrogen"
+    hydrogen: "Hydrogen",
+    gas95E5Premium: "Gasoline 95 E5 Premium"
 };
