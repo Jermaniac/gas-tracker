@@ -11,23 +11,23 @@ export const sortGasStationListByPriceType = (list: GasStation[]) => {
 }
 
 export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
-  const { info } = response;
-  const list = info.bestStations;
+  const { gasStationInfo } = response;
 
-  const gas95E5 = formatGasolinePrice(info.averages.g95_e5_avg_price ?? 0);
-  const gas98E5 = formatGasolinePrice(info.averages.g98_e5_avg_price ?? 0);
-  const gas95E10 = formatGasolinePrice(info.averages.g95_e10_avg_price ?? 0);
-  const gas98E10 = formatGasolinePrice(info.averages.g98_e10_avg_price ?? 0);
-  const biodiesel = formatGasolinePrice(info.averages.biodiesel_avg_price ?? 0);
-  const bioetanol = formatGasolinePrice(info.averages.bioetanol_avg_price ?? 0);
-  const gasNaturalComprimido = formatGasolinePrice(info.averages.gas_natural_comprimido_avg_price ?? 0);
-  const gasNaturalLicuado = formatGasolinePrice(info.averages.gas_natural_licuado_avg_price ?? 0);
-  const gasesLicuadosPetroleo = formatGasolinePrice(info.averages.gases_licuados_petroleo_avg_price ?? 0);
-  const gasoleoA = formatGasolinePrice(info.averages.gasoleo_a_avg_price ?? 0);
-  const gasoleoB = formatGasolinePrice(info.averages.gasoleo_b_avg_price ?? 0);
-  const gasoleoPremium = formatGasolinePrice(info.averages.gasoleo_premium_avg_price ?? 0);
-  const hidrogeno = formatGasolinePrice(info.averages.hidrogeno_avg_price ?? 0);
-
+  // maybe this could be done in backend
+  const gas95E5 = formatGasolinePrice(gasStationInfo.gas95E5?.average ?? 0);
+  const gas98E5 = formatGasolinePrice(gasStationInfo.gas98E5?.average ?? 0);
+  const gas95E10 = formatGasolinePrice(gasStationInfo.gas95E10?.average ?? 0);
+  const gas98E10 = formatGasolinePrice(gasStationInfo.gas98E10?.average ?? 0);
+  const biodiesel = formatGasolinePrice(gasStationInfo.biodiesel?.average ?? 0);
+  const bioetanol = formatGasolinePrice(gasStationInfo.bioetanol?.average ?? 0);
+  const gasNaturalComprimido = formatGasolinePrice(gasStationInfo.gasNaturalComprimido?.average ?? 0);
+  const gasNaturalLicuado = formatGasolinePrice(gasStationInfo.gasNaturalLicuado?.average ?? 0);
+  const gasesLicuadosPetroleo = formatGasolinePrice(gasStationInfo.gasesLicuadosPetroleo?.average ?? 0);
+  const gasoleoA = formatGasolinePrice(gasStationInfo.gasoleoA?.average ?? 0);
+  const gasoleoB = formatGasolinePrice(gasStationInfo.gasoleoB?.average ?? 0);
+  const gasoleoPremium = formatGasolinePrice(gasStationInfo.gasoleoPremium?.average ?? 0);
+  const hidrogeno = formatGasolinePrice(gasStationInfo.hydrogen?.average ?? 0);
+  
   const averages = { 
     gas95E5, 
     gas98E5, 
@@ -45,7 +45,7 @@ export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
   };
 
 
-  return { averages, list}
+  return gasStationInfo
 }
 
 export const formatGasolinePrice = (amount: number) => {

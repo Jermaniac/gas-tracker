@@ -18,7 +18,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
           {gasStationsCount && list.slice(0, LIMITED_LIST_NUMBER).map((gasStation, i) => {
             return (
               <div
-                key={`${gasStation.Rótulo}_${i}`}
+                key={`${gasStation.stationName}_${i}`}
                 className={clsx(
                   'flex flex-row items-center justify-between py-4',
                   {
@@ -30,17 +30,17 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
 
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
-                      {gasStation.Rótulo}
+                      {gasStation.stationName}
                     </p>
                     <p className="hidden text-sm text-gray-500 sm:block">
-                      {gasStation.Dirección}. {gasStation.Localidad}
+                      {gasStation.address}. {gasStation.locality}
                     </p>
                   </div>
                 </div>
                 <p
                   className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
                 >
-                  {gasStation[selectedFuel]} €
+                  {gasStation[`price${selectedFuel}`]} €
                 </p>
               </div>
             );

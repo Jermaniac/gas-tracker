@@ -88,12 +88,29 @@ export type InvoiceForm = {
 };
 
 export type APIGasolineResponse = {
-  info: Info;
+  gasStationInfo: GasStationInfo;
 }
 
-export type Info = {
+export type GasStationInfo = {
+  gas95E5: FuelPrice;
+  gas98E5: FuelPrice;
+  gas95E10: FuelPrice;
+  gas98E10: FuelPrice;
+  biodiesel: FuelPrice;
+  bioetanol: FuelPrice;
+  gasNaturalComprimido: FuelPrice;
+  gasNaturalLicuado: FuelPrice;
+  gasesLicuadosPetroleo: FuelPrice;
+  gasoleoA: FuelPrice;
+  gasoleoB: FuelPrice;
+  gasoleoPremium: FuelPrice;
+  hydrogen: FuelPrice;
+  gas95E5Premium: FuelPrice;
+};
+
+export type FuelPrice = {
   stations: GasStation[];
-  averages: Averages;
+  average: number;
 }
 
 export type Averages = {
@@ -134,39 +151,40 @@ export type AveragesFormated = {
 }
 
 export type GasStation = {
-  "% BioEtanol":                        string;
-  "% Éster metílico":                   string;
-  "C.P.":                               string;
-  Dirección:                            string;
-  Horario:                              string;
-  IDCCAA:                               string;
-  IDEESS:                               string;
-  IDMunicipio:                          string;
-  IDProvincia:                          string;
-  Latitud:                              string;
-  Localidad:                            string;
-  "Longitud (WGS84)":                   string;
-  Margen:                               string;
-  Municipio:                            string;
-  "Precio Biodiesel":                   number;
-  "Precio Bioetanol":                   number;
-  "Precio Gas Natural Comprimido":      number;
-  "Precio Gas Natural Licuado":         number;
-  "Precio Gases licuados del petróleo": number;
-  "Precio Gasoleo A":                   number;
-  "Precio Gasoleo B":                   number;
-  "Precio Gasoleo Premium":             number;
-  "Precio Gasolina 95 E10":             number;
-  "Precio Gasolina 95 E5":              number;
-  "Precio Gasolina 95 E5 Premium":      string;
-  "Precio Gasolina 98 E10":             number;
-  "Precio Gasolina 98 E5":              number;
-  "Precio Hidrogeno":                   number;
-  Provincia:                            string;
-  Remisión:                             string;
-  Rótulo:                               string;
-  "Tipo Venta":                         string;
-}
+  address: string;
+  autonomousCommunityId: string;
+  bioethanolPercentage: string;
+  hours: string;
+  latitude: string;
+  locality: string;
+  longitude: string;
+  margin: string;
+  methylEsterPercentage: string;
+  municipality: string;
+  municipalityId: string;
+  postalCode: string;
+  price95E10: number;
+  price95E5: number;
+  price95E5Premium: number;
+  price98E10: number;
+  price98E5: number;
+  priceBiodiesel: number;
+  priceBioethanol: number;
+  priceGasNaturalComprimido: number;
+  priceGasNaturalLicuado: number;
+  priceGasesLicuadosPetroleo: number;
+  priceGasoleoA: number;
+  priceGasoleoB: number;
+  priceGasoleoPremium: number;
+  priceHydrogen: number;
+  province: string;
+  provinceId: string;
+  saleType: string;
+  stationId: string;
+  stationName: string;
+  submission: string;
+};
+
 
 export const SPANISH_PROVINCES_CODES: { [key: string]: string } = {
   "01": "Álava",

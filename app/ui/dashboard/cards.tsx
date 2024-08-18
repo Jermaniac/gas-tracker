@@ -13,7 +13,7 @@ export default function CardWrapper ({ average }: { average: string }) {
   return (
     <>
       {average && <>
-        <Card title="Average Price Card" value={average} />
+        <Card title="Average Price" value={average} />
       </>}
     </>
   );
