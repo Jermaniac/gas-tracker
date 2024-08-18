@@ -1,5 +1,3 @@
-"use client";
-
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { LatLngExpression, LatLngTuple } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -23,12 +21,12 @@ const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
 
   useEffect(() => {
     if (list && list.length > 0) {
-      const formattedList = list.slice(0, 5).map(item => ({
+      const formattedList = list.map(item => ({
         position: [
-          parseFloat(item['Latitud'].replace(",", ".")),
-          parseFloat(item['Longitud (WGS84)'].replace(",", "."))
+          parseFloat(item.latitude.replace(",", ".")),
+          parseFloat(item.longitude.replace(",", "."))
         ],
-        name: item['Rótulo']
+        name: item.stationName
       }));
       setNewList(formattedList);
     }

@@ -9,7 +9,7 @@ const iconMap = {
   pending: ClockIcon,
 };
 
-export default function CardWrapper ({ average }: { average: string }) {
+export default function CardWrapper ({ average }: { average: number }) {
   return (
     <>
       {average && <>

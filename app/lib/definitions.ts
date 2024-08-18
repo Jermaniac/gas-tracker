@@ -109,7 +109,7 @@ export type GasStationInfo = {
 };
 
 export type FuelPrice = {
-  stations: GasStation[];
+  bestStations: GasStation[];
   average: number;
 }
 

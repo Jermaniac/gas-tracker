@@ -3,8 +3,6 @@ import clsx from 'clsx';
 import { lusitana } from '@/app/ui/fonts';
 import { GasStation } from '@/app/lib/definitions';
 
-const LIMITED_LIST_NUMBER = 5
-
 export default function GasStationList ({ list, selectedFuel }: { list: GasStation[], selectedFuel: String }) {
   const gasStationsCount = list ? list.length : 0
 
@@ -15,7 +13,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
-          {gasStationsCount && list.slice(0, LIMITED_LIST_NUMBER).map((gasStation, i) => {
+          {gasStationsCount && list.map((gasStation, i) => {
             return (
               <div
                 key={`${gasStation.stationName}_${i}`}
@@ -40,7 +38,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
                 <p
                   className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
                 >
-                  {gasStation[`price${selectedFuel}`]} €
+                  {gasStation[selectedFuel]} €
                 </p>
               </div>
             );
@@ -48,7 +46,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
         </div>
         <div className="flex items-center pb-2 pt-6">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Showing {LIMITED_LIST_NUMBER} of {gasStationsCount} gas stations</h3>
+          <h3 className="ml-2 text-sm text-gray-500 ">Showing {gasStationsCount} of {gasStationsCount} gas stations</h3>
         </div>
       </div>
     </div>
