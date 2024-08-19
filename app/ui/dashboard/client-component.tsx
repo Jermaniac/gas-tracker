@@ -5,9 +5,9 @@ import CardWrapper from './cards';
 import { FUEL_TYPES } from '@/app/lib/constants';
 import { GasStation, GasStationInfo } from '@/app/lib/definitions';
 import GasStationList from './gas-station-list';
-// import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
+import Map from '../map';
 
-// const Map = dynamic(() => import('../map/index'), { ssr: false });
 type GasStationInfoKeys = keyof GasStationInfo;
 
 interface ClientComponentProps {
@@ -36,9 +36,9 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
             <div className="mt-6">
                 <GasStationList list={data[selectedFuelType].bestStations} selectedFuel={selectedFuelType as keyof GasStation} />
             </div>
-            {/* <div>
+            <div>
                 <Map posix={[40.416775, -3.703790]} list={data[selectedFuelType].bestStations} />
-            </div> */}
+            </div>
         </>
     );
 };
