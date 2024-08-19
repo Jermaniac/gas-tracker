@@ -1,42 +1,4 @@
-import { APIGasolineResponse, GasStation, Revenue, SPANISH_PROVINCES_CODES } from './definitions';
-
-export const formatResponseGasolinePrices = (response: APIGasolineResponse) => {
-  const { gasStationInfo } = response;
-
-  // maybe this could be done in backend
-  const gas95E5 = formatGasolinePrice(gasStationInfo.gas95E5?.average ?? 0);
-  const gas98E5 = formatGasolinePrice(gasStationInfo.gas98E5?.average ?? 0);
-  const gas95E10 = formatGasolinePrice(gasStationInfo.gas95E10?.average ?? 0);
-  const gas98E10 = formatGasolinePrice(gasStationInfo.gas98E10?.average ?? 0);
-  const biodiesel = formatGasolinePrice(gasStationInfo.biodiesel?.average ?? 0);
-  const bioetanol = formatGasolinePrice(gasStationInfo.bioetanol?.average ?? 0);
-  const gasNaturalComprimido = formatGasolinePrice(gasStationInfo.gasNaturalComprimido?.average ?? 0);
-  const gasNaturalLicuado = formatGasolinePrice(gasStationInfo.gasNaturalLicuado?.average ?? 0);
-  const gasesLicuadosPetroleo = formatGasolinePrice(gasStationInfo.gasesLicuadosPetroleo?.average ?? 0);
-  const gasoleoA = formatGasolinePrice(gasStationInfo.gasoleoA?.average ?? 0);
-  const gasoleoB = formatGasolinePrice(gasStationInfo.gasoleoB?.average ?? 0);
-  const gasoleoPremium = formatGasolinePrice(gasStationInfo.gasoleoPremium?.average ?? 0);
-  const hidrogeno = formatGasolinePrice(gasStationInfo.hydrogen?.average ?? 0);
-  
-  const averages = { 
-    gas95E5, 
-    gas98E5, 
-    gas95E10, 
-    gas98E10, 
-    biodiesel, 
-    bioetanol, 
-    gasNaturalComprimido, 
-    gasNaturalLicuado, 
-    gasesLicuadosPetroleo, 
-    gasoleoA, 
-    gasoleoB, 
-    gasoleoPremium, 
-    hidrogeno 
-  };
-
-
-  return gasStationInfo
-}
+import { Revenue, SPANISH_PROVINCES_CODES } from './definitions';
 
 export const formatGasolinePrice = (amount: number) => {
   return amount == 0 ? 'No Data' : formatCurrency(amount)
