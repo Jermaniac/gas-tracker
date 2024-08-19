@@ -2,14 +2,15 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import { lusitana } from '@/app/ui/fonts';
 import { GasStation } from '@/app/lib/definitions';
+import { FUEL_TYPES } from '@/app/lib/constants';
 
-export default function GasStationList ({ list, selectedFuel }: { list: GasStation[], selectedFuel: String }) {
+export default function GasStationList ({ list, selectedFuel }: { list: GasStation[], selectedFuel: keyof GasStation }) {
   const gasStationsCount = list ? list.length : 0
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-        Cheapest Gas Stations By Gasoline 95 E5
+        Cheapest Gas Stations By {FUEL_TYPES[selectedFuel]}
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">

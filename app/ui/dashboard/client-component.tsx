@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import CardWrapper from './cards';
 import { FUEL_TYPES } from '@/app/lib/constants';
-import { GasStationInfo } from '@/app/lib/definitions';
+import { GasStation, GasStationInfo } from '@/app/lib/definitions';
 import GasStationList from './gas-station-list';
 // import dynamic from 'next/dynamic';
 
@@ -23,18 +23,18 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
 
     return (
         <>
-            <select name="fuelTypes" id="fuelTypes" onChange={handleSelectChange} value={selectedFuelType}>
+            <select className="mb-6" id="fuelTypes" onChange={handleSelectChange} value={selectedFuelType}>
                 {Object.keys(data).map((key: string) => (
                     <option key={key} value={key}>
                         {FUEL_TYPES[key]}
                     </option>
                 ))}
             </select>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-6">
                 <CardWrapper average={data[selectedFuelType].average} />
             </div>
             <div className="mt-6">
-                <GasStationList list={data[selectedFuelType].bestStations} selectedFuel={selectedFuelType} />
+                <GasStationList list={data[selectedFuelType].bestStations} selectedFuel={selectedFuelType as keyof GasStation} />
             </div>
             {/* <div>
                 <Map posix={[40.416775, -3.703790]} list={data[selectedFuelType].bestStations} />
