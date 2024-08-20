@@ -3,10 +3,12 @@ import clsx from 'clsx';
 import { lusitana } from '@/app/ui/fonts';
 import { GasStation } from '@/app/lib/definitions';
 import { FUEL_TYPES } from '@/app/lib/constants';
+import Map from '../map';
+// import dynamic from 'next/dynamic';
+
+// const Map = dynamic(() => import('../map/index'), { ssr: false })
 
 export default function GasStationList ({ list, selectedFuel }: { list: GasStation[], selectedFuel: keyof GasStation }) {
-  const gasStationsCount = list ? list.length : 0
-
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -14,7 +16,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white px-6">
-          {gasStationsCount && list.map((gasStation, i) => {
+          {list && list.map((gasStation, i) => {
             return (
               <div
                 key={`${gasStation.stationName}_${i}`}
@@ -47,9 +49,12 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
         </div>
         <div className="flex items-center pb-2 pt-6">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Showing {gasStationsCount} of {gasStationsCount} gas stations</h3>
+          <h3 className="ml-2 text-sm text-gray-500 ">Showing {0} of {0} gas stations</h3>
         </div>
       </div>
+      {/* {list && (
+        <Map posix={[40.416775, -3.703790]} list={list} />
+      )} */}
     </div>
   );
 }

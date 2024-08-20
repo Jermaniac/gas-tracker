@@ -35,25 +35,23 @@ const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
   }, [list]);
 
   return (
-    <div style={{ height: "300px", width: "100%" }}>
-      <MapContainer
-        center={posix}
-        zoom={zoom}
-        scrollWheelZoom={false}
-        style={{ height: "100%", width: "100%" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {newList && newList.map((item, index) => (
-          <Marker key={index} position={item.position} draggable={false}>
-            <Popup>{item.name}</Popup>
-          </Marker>
-        ))
-        }
-      </MapContainer>
-    </div>
+    <MapContainer
+      center={posix}
+      zoom={zoom}
+      scrollWheelZoom={false}
+      style={{ height: "500px", width: "100%" }}
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      {newList && newList.map((item, index) => (
+        <Marker key={index} position={item.position} draggable={false}>
+          <Popup>{item.name}</Popup>
+        </Marker>
+      ))
+      }
+    </MapContainer>
   );
 };
 
