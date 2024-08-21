@@ -16,7 +16,6 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
     const [selectedFuelType, setSelectedFuelType] = useState<GasStationInfoKeys>('gas95E5');
     const [dataFromFuelType, setDataFromFuelType] = useState<FuelPrice>()
     const keysFromData = Object.keys(data)
-    console.log(selectedFuelType)
 
     useEffect(() => {
         const realData = data[selectedFuelType]
@@ -28,14 +27,12 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
             {
                 dataFromFuelType && (
                     <div className="grid gap-6">
-                        <CardWrapper average={dataFromFuelType.average} />
+                        <CardWrapper average={dataFromFuelType.average} selectedFuel={selectedFuelType as keyof GasStation} />
                         <div className="mt-6 flex flex-col md:flex-row">
-                            <GasStationList list={dataFromFuelType.bestStations} selectedFuel={selectedFuelType as keyof GasStation} />
+                            <GasStationList list={dataFromFuelType.bestStations} totalStations={dataFromFuelType.totalStations} selectedFuel={selectedFuelType as keyof GasStation} />
                         </div>
                     </div>)
             }
-
-
         </>
     );
 };

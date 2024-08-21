@@ -8,7 +8,7 @@ import Map from '../map';
 
 // const Map = dynamic(() => import('../map/index'), { ssr: false })
 
-export default function GasStationList ({ list, selectedFuel }: { list: GasStation[], selectedFuel: keyof GasStation }) {
+export default function GasStationList ({ list, selectedFuel, totalStations }: { list: GasStation[], selectedFuel: keyof GasStation, totalStations: number }) {
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -49,7 +49,7 @@ export default function GasStationList ({ list, selectedFuel }: { list: GasStati
         </div>
         <div className="flex items-center pb-2 pt-6">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Showing {0} of {0} gas stations</h3>
+          <h3 className="ml-2 text-sm text-gray-500 ">Showing {list.length} of {totalStations} gas stations</h3>
         </div>
       </div>
       {/* {list && (

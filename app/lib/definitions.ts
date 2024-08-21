@@ -111,43 +111,7 @@ export type GasStationInfo = {
 export type FuelPrice = {
   bestStations: GasStation[];
   average: number;
-}
-
-export type Averages = {
-  g95_e10_avg_price: number | null;
-  g95_e5_avg_price:  number | null;
-  g98_e10_avg_price: number | null;
-  g98_e5_avg_price:  number | null;
-  biodiesel_avg_price:        number | null;
-  bioetanol_avg_price:        number | null;
-  gas_natural_comprimido_avg_price: number | null;
-  gas_natural_licuado_avg_price:   number | null;
-  gases_licuados_petroleo_avg_price: number | null;
-  gasoleo_a_avg_price:            number | null;
-  gasoleo_b_avg_price:            number | null;
-  gasoleo_premium_avg_price:      number | null;
-  hidrogeno_avg_price:            number | null;
-}
-
-export type InfoFormated = {
-  list: GasStation[];
-  averages: AveragesFormated;
-}
-
-export type AveragesFormated = {
-  avgPrice95E10: string;
-  avgPrice95E5:  string;
-  avgPrice98E10: string;
-  avgPrice98E5:  string;
-  avgPriceBiodiesel:       string;
-  avgPriceBioetanol:       string;
-  avgPriceGasNaturalComprimido: string;
-  avgPriceGasNaturalLicuado:  string;
-  avgPriceGasesLicuadosPetroleo: string;
-  avgPriceGasoleoA:        string;
-  avgPriceGasoleoB:        string;
-  avgPriceGasoleoPremium:  string;
-  avgPriceHidrogeno:       string;
+  totalStations: number
 }
 
 export type GasStation = {

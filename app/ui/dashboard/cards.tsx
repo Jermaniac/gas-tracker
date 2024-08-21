@@ -3,17 +3,19 @@ import {
   ClockIcon,
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
+import { GasStation } from '@/app/lib/definitions';
+import { FUEL_TYPES } from '@/app/lib/constants';
 
 const iconMap = {
   price: BanknotesIcon,
   pending: ClockIcon,
 };
 
-export default function CardWrapper ({ average }: { average: number }) {
+export default function CardWrapper ({ average, selectedFuel }: { average: number, selectedFuel: keyof GasStation }) {
   return (
     <>
       {average && <>
-        <Card title="Average Price" value={average} />
+        <Card title={`Average Price ${FUEL_TYPES[selectedFuel]}`} value={average} />
       </>}
     </>
   );
