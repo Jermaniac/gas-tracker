@@ -78,7 +78,8 @@ def process_gas_data(data, id_provincia):
                 
                 result[FUEL_NAMES[fuel_type]] = {
                     "bestStations": customized_stations,
-                    "average": sanitized_mean_value
+                    "average": sanitized_mean_value,
+                    "totalStations": valid_df.shape[0]
                 }
 
     return result
