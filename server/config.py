@@ -89,5 +89,5 @@ STATION_KEY_MAPPING = {
     'Provincia': 'province',
     'Remisión': 'submission',
     'Tipo Venta': 'saleType',
-    'Precio Gasolina 95 E5 Premium': 'price95E5Premium'
+    'Precio Gasolina 95 E5 Premium': 'gas95E5Premium'
 }
