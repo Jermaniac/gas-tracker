@@ -13,7 +13,7 @@ export default function Page ({ params }: { params: { provinceId: string } }) {
             </h1>
             <div>
                 <Suspense fallback={<DashboardSkeleton />}>
-                    <GasPricesInfo provinceId={params.provinceId} />
+                    <DashboardSkeleton provinceId={params.provinceId} />
                 </Suspense>
             </div>
         </main >

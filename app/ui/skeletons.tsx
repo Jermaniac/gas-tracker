@@ -39,12 +39,19 @@ export function LatestInvoicesSkeleton () {
     >
       <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" />
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-100 p-4">
-        <div className="bg-white px-6">
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
-          <InvoiceSkeleton />
+        <div className="flex flex-col md:flex-row">
+          <div className="bg-white w-full md:w-3/5 px-6">
+            <InvoiceSkeleton />
+            <InvoiceSkeleton />
+            <InvoiceSkeleton />
+            <InvoiceSkeleton />
+            <InvoiceSkeleton />
+          </div>
+          <div className="w-full pt-6 md:w-2/5 px-6 md:pt-0">
+            <div className="bg-white">
+              <div className="h-96 w-12" />
+            </div>
+          </div>
         </div>
         <div className="flex items-center pb-2 pt-6">
           <div className="h-5 w-5 rounded-full bg-gray-200" />
