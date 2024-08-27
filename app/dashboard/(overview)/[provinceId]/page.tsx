@@ -5,7 +5,8 @@ import GasPricesInfo from '@/app/ui/dashboard/gaspricesinfo';
 import { SPANISH_PROVINCES_CODES } from '@/app/lib/definitions';
 
 export default function Page ({ params }: { params: { provinceId: string } }) {
-    const provinceName = SPANISH_PROVINCES_CODES[params.provinceId]
+    const { provinceId } = params
+    const provinceName = SPANISH_PROVINCES_CODES[provinceId]
     return (
         <main>
             <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -13,7 +14,7 @@ export default function Page ({ params }: { params: { provinceId: string } }) {
             </h1>
             <div>
                 <Suspense fallback={<DashboardSkeleton />}>
-                    <GasPricesInfo provinceId={params.provinceId} />
+                    <GasPricesInfo provinceId={provinceId} />
                 </Suspense>
             </div>
         </main >

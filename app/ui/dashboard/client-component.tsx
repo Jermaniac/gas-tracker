@@ -2,20 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import CardWrapper from './cards';
-import { FuelPrice, GasStation, GasStationInfo } from '@/app/lib/definitions';
+import { FuelPrice, GasStation, GasStationInfo, GasStationInfoKeys } from '@/app/lib/definitions';
 import GasStationList from './gas-station-list';
 import FuelTypeDropdown from './fueltype-dropdown';
 
-type GasStationInfoKeys = keyof GasStationInfo;
-
 interface ClientComponentProps {
-    data: GasStationInfo
+    data: GasStationInfo,
+    availableTypes: GasStationInfoKeys[]
 }
 
-const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
-    const [selectedFuelType, setSelectedFuelType] = useState<GasStationInfoKeys>('gas95E5');
+const ClientComponent: React.FC<ClientComponentProps> = ({ data, availableTypes }) => {
+    const [selectedFuelType, setSelectedFuelType] = useState<GasStationInfoKeys>(availableTypes[0]);
     const [dataFromFuelType, setDataFromFuelType] = useState<FuelPrice>()
-    const keysFromData = Object.keys(data)
 
     useEffect(() => {
         const realData = data[selectedFuelType]
@@ -23,7 +21,7 @@ const ClientComponent: React.FC<ClientComponentProps> = ({ data }) => {
     }, [selectedFuelType])
     return (
         <>
-            <FuelTypeDropdown keys={keysFromData} setter={setSelectedFuelType} />
+            <FuelTypeDropdown keys={availableTypes} setter={setSelectedFuelType} />
             {
                 dataFromFuelType && (
                     <div className="grid gap-6">

@@ -204,3 +204,5 @@ export const SPANISH_PROVINCES_CODES: { [key: string]: string } = {
   "51": "Ceuta",
   "52": "Melilla"
 };
+
+export type GasStationInfoKeys = keyof GasStationInfo;
