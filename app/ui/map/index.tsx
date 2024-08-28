@@ -9,16 +9,17 @@ import { GasStation } from "@/app/lib/definitions";
 import { useEffect, useState } from "react";
 
 interface MapProps {
-  posix: LatLngExpression | LatLngTuple;
+  posix?: LatLngExpression | LatLngTuple;
   zoom?: number;
   list: GasStation[];
 }
 
 const defaults = {
   zoom: 5,
+  posix: { lat: 40.416775, lng: -3.703790 }
 };
 
-const Map = ({ zoom = defaults.zoom, posix, list }: MapProps) => {
+const Map = ({ zoom = defaults.zoom, posix = defaults.posix, list }: MapProps) => {
   const [newList, setNewList] = useState<any[]>([]);
 
   useEffect(() => {

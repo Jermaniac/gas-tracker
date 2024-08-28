@@ -52,7 +52,7 @@ export default function GasStationList ({ list, selectedFuel, totalStations }: {
 
           </div>
           <div className="w-full lg:w-2/5 p-4">
-            <Map posix={[40.416775, -3.703790]} list={list} />
+            <Map list={list} />
 
           </div>
 

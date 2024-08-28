@@ -25,15 +25,14 @@ export default async function Page ({
           <p className={`${lusitana.className} text-lg text-gray-700 text-center`}>
             Discover real-time gasoline prices across Spanish provinces.
           </p>
-
-          <div className={`${lusitana.className}`}>
-            <Search placeholder="Search province..." />
-          </div>
           <p className={`${lusitana.className} text-lg text-gray-700 text-center`}>
             Note: The first request may experience a delay due to
             server initialization. If this occurs, please try again after a
             minute. Thank you for your patience!
           </p>
+          <div className={`${lusitana.className}`}>
+            <Search placeholder="Search province..." />
+          </div>
         </aside>
         <section className="flex flex-col flex-grow p-6 md:p-8">
           <h1 className={`${lusitana.className} flex text-2xl justify-center font-semibold text-gray-800 mb-4`}>
