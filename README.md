@@ -11,15 +11,20 @@ The Gasoline Prices Viewer is a web application designed to simplify and enhance
    - It's recommended to use `pyenv` to manage your Python versions.
    - After installing `pyenv`, create and activate a new virtual environment:
      ```bash
-     pyenv virtualenv <version> gasoline-viewer-env
-     pyenv activate gasoline-viewer-env
+     pyenv virtualenv venv
+     pyenv activate venv
+     ```
+   - For Windows users you will have to make sure you haveve Python installed and then install virtualenv
+      ```bash
+      pip install virtualenv
+      virtualenv server/venv
+      .\server\venv\Scripts\Activate
      ```
 
 2. **Install Dependencies**:
-   - Navigate to the `server` folder.
    - Install the required Python libraries by running:
      ```bash
-     pip install -r requirements.txt
+     pip install -r server/requirements.txt
      ```
 
 ### Frontend (Next.js)
@@ -42,7 +47,7 @@ The Gasoline Prices Viewer is a web application designed to simplify and enhance
 1. **Start the Backend Server**:
    - In the `server` directory, run the backend server with:
      ```bash
-     python app.py
+     python server/app.py
      ```
    - This will start the Python server, which processes and serves the gasoline price data to the frontend.
 

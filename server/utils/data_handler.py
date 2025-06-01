@@ -1,5 +1,6 @@
 import config
-import requests
+import pycurl
+import io
 import json
 import pandas as pd
 
@@ -21,14 +22,19 @@ class APIException(Exception):
     pass
 
 def retrieve_gas_data():
+    buffer = io.BytesIO()
+    c = pycurl.Curl()
+    c.setopt(c.URL, API_REST_URL)
+    c.setopt(c.WRITEDATA, buffer)
+    c.setopt(c.HTTPHEADER, ["Accept: application/json"])
     try:
-        response = requests.get(API_REST_URL)
-        response.raise_for_status()
-        html_content = response.content.decode(DECODE_FORMAT)
+        c.perform()
+        c.close()
+        html_content = buffer.getvalue().decode(DECODE_FORMAT)
         data = json.loads(html_content)
         return data
-    except requests.RequestException as e:
-        raise APIException(f"Request failed: {e}")
+    except pycurl.error as e:
+        raise APIException(f"pycurl failed: {e}")
     except json.JSONDecodeError as e:
         raise APIException(f"JSON decode error: {e}")
     except Exception as e:
